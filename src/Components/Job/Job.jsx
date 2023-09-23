@@ -1,8 +1,10 @@
 import { GrLocation } from "react-icons/gr";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -42,9 +44,11 @@ const Job = ({ job }) => {
           </div>
         </div>
         <div className="card-actions">
-          <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-            View Details
-          </button>
+          <Link to={`/job/${id}`}>
+            <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
