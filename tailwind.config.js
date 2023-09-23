@@ -4,5 +4,16 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    function ({ addUtilities }) {
+      const linearGradients = {
+        ".bg-gradient": {
+          background: "linear-gradient(90deg, #7E90FE 0%, #9873FF 100%)",
+        },
+      };
+
+      addUtilities(linearGradients, ["responsive", "hover"]);
+    },
+  ],
 };
