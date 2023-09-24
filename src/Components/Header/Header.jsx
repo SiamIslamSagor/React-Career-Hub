@@ -1,22 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <Link className="p-0" to="/">
+          <button className="btn bg-white text-[#7E90FE] px-5 py-2 font-extrabold rounded duration-700 border-white  hover:border-[#7E90FE] hover:bg-white">
+            Home
+          </button>
+        </Link>
       </li>
       <li>
-        <NavLink to="jobs">Jobs</NavLink>
+        <Link className="p-0" to="applied">
+          <button className="btn bg-white text-[#7E90FE] px-5 py-2 font-extrabold rounded duration-700 border-white  hover:border-[#7E90FE] hover:bg-white">
+            Applied Jobs
+          </button>
+        </Link>
       </li>
       <li>
-        <NavLink to="/applied">Applied Jobs</NavLink>
-      </li>
-      <li>
-        <NavLink to="/statistics">Statistics</NavLink>
-      </li>
-      <li>
-        <NavLink to="/blogs">Blogs</NavLink>
+        <Link className="p-0" to="/blogs">
+          <button className="btn bg-white text-[#7E90FE] px-5 py-2 font-extrabold rounded duration-700 border-white hover:border-[#7E90FE] hover:bg-white">
+            Blogs
+          </button>
+        </Link>
       </li>
     </>
   );
@@ -43,7 +49,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52"
           >
             {links}
           </ul>
@@ -51,10 +57,12 @@ const Header = () => {
         <a className="btn btn-ghost normal-case text-xl">CareerHub</a>
       </div>
       <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 flex gap-4">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Start Applying</a>
+        <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+          start applying
+        </button>
       </div>
     </div>
   );
