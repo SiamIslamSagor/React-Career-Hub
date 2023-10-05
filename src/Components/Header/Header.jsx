@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../utility/useAuth";
 
 const Header = () => {
+  const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut().then().catch();
+  };
+
   const links = (
     <>
       <li>
@@ -60,11 +67,20 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1 flex gap-4">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-            Login
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold"
+          >
+            LogOut
           </button>
-        </Link>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
