@@ -10,6 +10,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import JobsDetails from "./Components/JobsDetails/JobsDetails";
 import Login from "./Components/Login/Login";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import Register from "./Components/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

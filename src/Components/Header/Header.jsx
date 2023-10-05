@@ -75,11 +75,18 @@ const Header = () => {
             LogOut
           </button>
         ) : (
-          <Link to="/login">
-            <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-              Login
-            </button>
-          </Link>
+          <>
+            <Link to="/login">
+              <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+                Login
+              </button>
+            </Link>
+            <Link to="/register">
+              <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+                Register
+              </button>
+            </Link>
+          </>
         )}
       </div>
     </div>

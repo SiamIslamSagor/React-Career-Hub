@@ -1,20 +1,21 @@
 import { useState } from "react";
 import useAuth from "../../utility/useAuth";
 
-const Login = () => {
+const Register = () => {
   const [error, setError] = useState(null);
-
-  const { googleSignIn, logIn } = useAuth();
+  const { createUser } = useAuth();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
     console.log(name, email, password);
 
     // crete user
-    logIn(email, password)
+    createUser(email, password)
       .then(result => console.log(result.user))
       .catch(error => {
         console.log(error);
@@ -22,15 +23,6 @@ const Login = () => {
       });
   };
 
-  // login with google
-  const handleGoogleLogIn = () => {
-    googleSignIn()
-      .then(result => console.log(result.user))
-      .catch(error => {
-        console.log(error);
-        setError(error.message);
-      });
-  };
   return (
     <div className="container mx-auto">
       <form onSubmit={handleSubmit} className="card-body">
@@ -41,12 +33,34 @@ const Login = () => {
         )}
         <div className="form-control">
           <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            className="input input-bordered"
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input
+            type="text"
+            name="photo"
+            placeholder="photo url"
+            className="input input-bordered"
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input
             type="email"
-            placeholder="email"
             name="email"
+            placeholder="email"
             className="input input-bordered"
             required
           />
@@ -57,8 +71,8 @@ const Login = () => {
           </label>
           <input
             type="password"
-            placeholder="password"
             name="password"
+            placeholder="password"
             className="input input-bordered"
             required
           />
@@ -69,19 +83,14 @@ const Login = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-secondary">Register</button>
         </div>
         <div className="form-control mt-6 inline-block text-center">
-          <button
-            onClick={handleGoogleLogIn}
-            className="btn btn-success btn-sm"
-          >
-            Login With Google
-          </button>
+          <button className="btn btn-success btn-sm">Login With Google</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
