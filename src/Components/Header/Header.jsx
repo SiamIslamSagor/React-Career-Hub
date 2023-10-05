@@ -76,14 +76,14 @@ const Header = () => {
           </button>
         ) : (
           <>
-            <Link to="/login">
+            {/* <Link to="/login">
               <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
                 Login
               </button>
-            </Link>
+            </Link> */}
             <Link to="/register">
               <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-                Register
+                Star Applying
               </button>
             </Link>
           </>

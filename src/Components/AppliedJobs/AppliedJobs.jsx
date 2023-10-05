@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getStoredJobApplication } from "../../utility/localStorage";
-import { list } from "postcss";
 import { FiFilter } from "react-icons/fi";
 
 const AppliedJobs = () => {

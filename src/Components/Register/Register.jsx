@@ -1,9 +1,13 @@
 import { useState } from "react";
 import useAuth from "../../utility/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [error, setError] = useState(null);
+
   const { createUser } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,7 +20,10 @@ const Register = () => {
 
     // crete user
     createUser(email, password)
-      .then(result => console.log(result.user))
+      .then(result => {
+        console.log(result.user);
+        navigate("/");
+      })
       .catch(error => {
         console.log(error);
         setError(error.message);
@@ -26,6 +33,7 @@ const Register = () => {
   return (
     <div className="container mx-auto">
       <form onSubmit={handleSubmit} className="card-body">
+        <h2 className="text-4xl font-medium text-center">Please Register</h2>
         {error && (
           <h2 className="text-red-500 font-medium">
             ERR: {error.slice(15, error.length)}
@@ -76,18 +84,16 @@ const Register = () => {
             className="input input-bordered"
             required
           />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">
-              Forgot password?
-            </a>
-          </label>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-secondary">Register</button>
         </div>
-        <div className="form-control mt-6 inline-block text-center">
-          <button className="btn btn-success btn-sm">Login With Google</button>
-        </div>
+        <p className="text-center my-5 font-medium">
+          Already have an account ? Please{" "}
+          <Link className="text-blue-500 underline" to="/login">
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

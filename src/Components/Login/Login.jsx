@@ -1,10 +1,13 @@
 import { useState } from "react";
 import useAuth from "../../utility/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState(null);
 
   const { googleSignIn, logIn } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -15,7 +18,10 @@ const Login = () => {
 
     // crete user
     logIn(email, password)
-      .then(result => console.log(result.user))
+      .then(result => {
+        console.log(result.user);
+        navigate("/");
+      })
       .catch(error => {
         console.log(error);
         setError(error.message);
@@ -25,7 +31,10 @@ const Login = () => {
   // login with google
   const handleGoogleLogIn = () => {
     googleSignIn()
-      .then(result => console.log(result.user))
+      .then(result => {
+        console.log(result.user);
+        navigate("/");
+      })
       .catch(error => {
         console.log(error);
         setError(error.message);
@@ -71,15 +80,21 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
-        <div className="form-control mt-6 inline-block text-center">
-          <button
-            onClick={handleGoogleLogIn}
-            className="btn btn-success btn-sm"
-          >
-            Login With Google
-          </button>
-        </div>
       </form>
+      <div className="form-control mb-6  flex items-center text-center">
+        <button
+          onClick={handleGoogleLogIn}
+          className="btn w-[200px] btn-success btn-sm"
+        >
+          Login With Google
+        </button>
+      </div>
+      <p className="text-center my-5 font-medium">
+        New here ? Please{" "}
+        <Link className="text-blue-500 underline" to="/register">
+          Register
+        </Link>
+      </p>
     </div>
   );
 };

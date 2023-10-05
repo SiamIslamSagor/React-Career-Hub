@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 import userImg from "../../../public/images/user.png";
+import useAuth from "../../utility/useAuth";
 import "./Banner.css";
 
 const Banner = () => {
+  const { user } = useAuth();
   return (
     <div className="container mx-auto banner-div flex flex-col items-center justify-between md:flex-row">
       <div className="max-w-[570px]">
@@ -14,9 +17,17 @@ const Banner = () => {
           need. Its your future. Come find it. Manage all your job application
           from start to finish.
         </p>
-        <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-          Get Started
-        </button>
+        {user ? (
+          <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+            Get Started
+          </button>
+        ) : (
+          <Link to="/register">
+            <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+              Get Started
+            </button>
+          </Link>
+        )}
       </div>
       <div>
         <img src={userImg} alt="" />

@@ -11,6 +11,7 @@ import JobsDetails from "./Components/JobsDetails/JobsDetails";
 import Login from "./Components/Login/Login";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Register from "./Components/Register/Register";
+import PrivetRoute from "./PrivetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/applied",
-        element: <AppliedJobs></AppliedJobs>,
+        element: (
+          <PrivetRoute>
+            <AppliedJobs></AppliedJobs>
+          </PrivetRoute>
+        ),
         loader: () => fetch("/jobs.json"), // do not load all data. load only what you need
       },
       {
