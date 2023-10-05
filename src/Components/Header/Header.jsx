@@ -60,9 +60,11 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1 flex gap-4">{links}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-          start applying
-        </button>
+        <Link to="/login">
+          <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

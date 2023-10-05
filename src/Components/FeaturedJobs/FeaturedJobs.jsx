@@ -22,7 +22,7 @@ const FeaturedJobs = () => {
           need. Its your future
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         {jobs.slice(0, dataLength).map(job => (
           <Job key={job.id} job={job}></Job>
         ))}

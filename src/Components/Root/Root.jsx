@@ -7,8 +7,8 @@ const Root = () => {
     <div>
       <div className="container mx-auto">
         <Header></Header>
-        <Outlet></Outlet>
       </div>
+      <Outlet className="container mx-auto"></Outlet>
       <Footer></Footer>
     </div>
   );
