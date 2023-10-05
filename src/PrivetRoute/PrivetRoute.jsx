@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 import useAuth from "../utility/useAuth";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 const PrivetRoute = ({ children }) => {
   const { user, loading } = useAuth();
+
+  const location = useLocation();
+  console.log(location);
   if (loading) {
     return <span className="loading loading-bars loading-lg"></span>;
   }
   if (!user) {
-    return <Navigate to="/register"></Navigate>;
+    return <Navigate to="/login" state={location.pathname}></Navigate>;
   }
   return children;
 };

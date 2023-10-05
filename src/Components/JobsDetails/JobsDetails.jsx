@@ -1,11 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { saveJobApplication } from "../../utility/localStorage";
-import useAuth from "../../utility/useAuth";
 
 const JobsDetails = () => {
-  const { user } = useAuth();
   const { id } = useParams();
 
   const handleApplyJob = () => {
@@ -22,20 +20,12 @@ const JobsDetails = () => {
         </div>
         <div className="border">
           <h2>Side thing</h2>
-          {user ? (
-            <button
-              onClick={handleApplyJob}
-              className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold"
-            >
-              Apply Now
-            </button>
-          ) : (
-            <Link to="/register">
-              <button className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold">
-                Apply Now
-              </button>
-            </Link>
-          )}
+          <button
+            onClick={handleApplyJob}
+            className="btn btn-primary bg-gradient border-white duration-700 text-white font-bold"
+          >
+            Apply Now
+          </button>
         </div>
       </div>
       <ToastContainer></ToastContainer>

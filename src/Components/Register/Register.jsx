@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAuth from "../../utility/useAuth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [error, setError] = useState(null);
@@ -8,6 +8,9 @@ const Register = () => {
   const { createUser } = useAuth();
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  console.log(location);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -22,7 +25,7 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user);
-        navigate("/");
+        navigate(location.state ? location.state : "/");
       })
       .catch(error => {
         console.log(error);

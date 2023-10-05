@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAuth from "../../utility/useAuth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -8,6 +8,9 @@ const Login = () => {
   const { googleSignIn, logIn } = useAuth();
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  console.log(location);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,7 +23,7 @@ const Login = () => {
     logIn(email, password)
       .then(result => {
         console.log(result.user);
-        navigate("/");
+        navigate(location.state ? location.state : "/");
       })
       .catch(error => {
         console.log(error);
@@ -90,7 +93,7 @@ const Login = () => {
         </button>
       </div>
       <p className="text-center my-5 font-medium">
-        New here ? Please{" "}
+        Do not have an account ? Please{" "}
         <Link className="text-blue-500 underline" to="/register">
           Register
         </Link>
